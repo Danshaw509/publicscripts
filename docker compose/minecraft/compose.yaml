@@ -1,0 +1,21 @@
+---
+version: "3"
+networks:
+  backend:
+
+services:
+  newhardcore:
+    image: itzg/minecraft-server
+    environment:
+      - EULA=TRUE
+      - PUID=0
+      - PGID=121
+      - VERSION=1.20.2
+      - MOTD=My MC Server
+    volumes:
+      - ./data/newhardcore:/data
+    restart: unless-stopped
+    ports:
+      - 25522:25565
+    networks:
+      - backend
